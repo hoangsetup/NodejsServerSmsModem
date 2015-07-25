@@ -1,0 +1,17 @@
+{
+    "name": "NodejsServerSmsModem",
+    "version": "0.0.0",
+    "description": "NodejsServerSmsModem",
+    "scripts": {
+	  "start": "node server.js"
+	},
+    "main": "server.js",
+    "author": {
+        "name": "Hoangdv",
+        "email": ""
+    },
+    "dependencies" :  {
+        "express": "*",
+        "socket.io": "*"
+    }
+}
