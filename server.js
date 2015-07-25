@@ -1,7 +1,7 @@
 var express = require('express');
 var app = express();
 var http = require('http').Server(app);
-var port = process.env.OPENSHIFT_NODEJS_PORT || 8080;
+var port = process.env.OPENSHIFT_NODEJS_PORT || 8000;
 var server_ip_add = process.env.OPENSHIFT_NODEJS_IP || '127.0.0.1';
 var io = require('socket.io')(http);
 app.get('/', function (req, res) {
