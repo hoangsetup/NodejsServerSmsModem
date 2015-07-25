@@ -13,6 +13,9 @@ io.on('connection', function (socket) {
 	socket.on('disconnect', function(){
 		console.log(socket.id+' is disconnected!');
 	});
+	socket.on('result', function(data){
+		console.log(data);
+	});
 });
 http.listen(port, server_ip_add, function (){
 	console.log('Server listening on '+server_ip_add+':'+port);
