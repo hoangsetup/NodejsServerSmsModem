@@ -3,15 +3,17 @@ var app = express();
 var http = require('http').Server(app);
 var port = process.env.OPENSHIFT_NODEJS_PORT || 8080;
 var server_ip_add = process.env.OPENSHIFT_NODEJS_IP || '127.0.0.1';
-var io = require('socket.io')(http);
-app.use(function (req, res, next) {
-        res.setHeader('Access-Control-Allow-Origin', "http://"+req.headers.host+':8080');
-
-        res.setHeader('Access-Control-Allow-Methods', 'GET, POST, OPTIONS, PUT, PATCH, DELETE');
-        res.setHeader('Access-Control-Allow-Headers', 'X-Requested-With,content-type');
-        next();
-    }
-);
+var io = require('socket.io')(http, {
+            'origins': 'https://'+server_ip_add+':'+port,
+            'serveClient': false
+        });
+app.use(function(req, res, next) {
+    res.header("Access-Control-Allow-Origin", "*");
+    res.header("Access-Control-Allow-Headers", "X-Requested-With");
+    res.header("Access-Control-Allow-Headers", "Content-Type");
+    res.header("Access-Control-Allow-Methods", "PUT, GET, POST, DELETE, OPTIONS");
+    next();
+});
 app.get('/', function (req, res) {
     res.send('Hello world! I am listening on '+ server_ip_add+':'+port);
 });
