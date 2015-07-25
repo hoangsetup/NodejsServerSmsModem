@@ -5,7 +5,7 @@ var port = process.env.OPENSHIFT_NODEJS_PORT || 8000;
 var server_ip_add = process.env.OPENSHIFT_NODEJS_IP || '127.0.0.1';
 var io = require('socket.io')(http);
 app.get('/', function (req, res) {
-    res.send('Hello world! I am listening on '+ server_ip_add+':'+port);
+    res.send('Hello world! I am listening on '+ server_ip_add+':'+process.env.OPENSHIFT_NODEJS_PORT);
 });
 io.on('connection', function (socket) {
 	console.log(socket.id + ' is connected!');
