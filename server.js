@@ -4,9 +4,9 @@ var http = require('http').Server(app);
 var port = process.env.OPENSHIFT_NODEJS_PORT || 8080;
 var server_ip_add = process.env.OPENSHIFT_NODEJS_IP || '127.0.0.1';
 var io = require('socket.io')(http, {
-            'origins': 'https://'+server_ip_add+':'+port,
-            'serveClient': false
-        });
+    'origins': 'https://'+server_ip_add+':'+port,
+    'serveClient': false
+});
 app.use(function(req, res, next) {
     res.header("Access-Control-Allow-Origin", "*");
     res.header("Access-Control-Allow-Headers", "X-Requested-With");
